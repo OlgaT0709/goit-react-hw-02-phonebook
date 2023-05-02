@@ -17,48 +17,49 @@ const initialValues = {
     number: '',
 };
 
-export const ContactForm = ({ state , modifyContactList }) => {
-        
+export const ContactForm = ({ state, modifyContactList }) => {
+    
+          
     const addContact = (newContact, { resetForm }) => {
-    const { contacts } = state; 
+        const { contacts } = state; 
 
-    if (contacts.find(contact => contact.name.toLowerCase() === newContact.name.toLowerCase())) {
-        notifier.error(`${newContact.name} is already in contact`);
-    } else {
-        modifyContactList(newContact);
-        };
+        if (contacts.find(contact => contact.name.toLowerCase() === newContact.name.toLowerCase())) {
+            notifier.error(`${newContact.name} is already in contact`);
+        } else {
+            modifyContactList(newContact);
+            };
 
-    resetForm();  
-  }
+        resetForm();  
+    }
+    
+    
 
     return ( 
         <ContactContainer>
             <Formik
-            initialValues={initialValues}
-            validationSchema={schema}
-            onSubmit={addContact}
-            >
-                <Form autoComplete="off">
-                    <StyledLabel htmlFor="name">
-                        Name
-                        <StyledInput type="text" name="name" placeholder="Jacob Mercer"/>
-                        <ErrorMessage name="name" component="div" />
-                    </StyledLabel>
+                initialValues={initialValues}
+                validationSchema={schema}
+                onSubmit={addContact}>
+                {({ values }) => (
+                    <Form autoComplete="off">
+                        <StyledLabel htmlFor="name">
+                            Name
+                            <StyledInput value={values.name} type="text" name="name" placeholder="Jacob Mercer" />
+                            <ErrorMessage name="name" component="div" />
+                        </StyledLabel>
                     
-                    <StyledLabel htmlFor="number">
-                        Number
-                        <StyledInput type="tel" name="number" placeholder="+38 044 000-00-00" />
-                        <ErrorMessage name="number" component="div" />
-                    </StyledLabel>
-                    <AddContactBtn type="submit">Add contact</AddContactBtn>
-                </Form>
+                        <StyledLabel htmlFor="number">
+                            Number
+                            <StyledInput value={values.number} type="tel" name="number" placeholder="+38 044 000-00-00" />
+                            <ErrorMessage name="number" component="div" />
+                        </StyledLabel>
+                        <AddContactBtn type="submit">Add contact</AddContactBtn>
+                    </Form>
+                )}
             </Formik>
         </ContactContainer>
     );
 };
-
-
-
 
 
 
