@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 export const ListOfContact = styled.ul`
+    max-height: 232px;
+    overflow-y: auto;
     padding: ${props => props.theme.spacing(2)};
     background-color: ${props => props.theme.colors.lightGrey};
     border: ${props => `1px solid ${props.theme.colors.secondaryText}`};
@@ -14,7 +16,6 @@ export const ListOfContact = styled.ul`
 
 export const  EachContact= styled.li`
     width: 100%;
-    height: 100%;    
     display: flex;
     justify-content: center;
     align-content: center;
