@@ -69,7 +69,7 @@ export class App extends Component {
         <Title>Phonebook</Title>
         <ContactForm state={this.state} modifyContactList={this.modifyContactList}  />
         <ContactContainer>
-          <SubTitle>Contacts </SubTitle>
+          <SubTitle>Contacts {contacts.length} </SubTitle>
           <Filter value={filter} onChangeFilter={this.changeFilter} />
           <ContactList contactList={filteredContacts} onDelContact={this.delContact } />
         </ContactContainer>

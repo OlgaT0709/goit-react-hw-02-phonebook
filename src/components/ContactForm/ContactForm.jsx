@@ -45,13 +45,13 @@ export const ContactForm = ({ state, modifyContactList }) => {
                         <StyledLabel htmlFor="name">
                             Name
                             <StyledInput value={values.name} type="text" name="name" placeholder="Jacob Mercer" />
-                            <ErrorMessage name="name" component="div" />
+                            <ErrorMessage name="name" render={(msg) => notifier.warning(msg)} />
                         </StyledLabel>
                     
                         <StyledLabel htmlFor="number">
                             Number
                             <StyledInput value={values.number} type="tel" name="number" placeholder="+38 044 000-00-00" />
-                            <ErrorMessage name="number" component="div" />
+                            <ErrorMessage name="number" render={(msg) => notifier.warning(msg)} />
                         </StyledLabel>
                         <AddContactBtn type="submit">Add contact</AddContactBtn>
                     </Form>
